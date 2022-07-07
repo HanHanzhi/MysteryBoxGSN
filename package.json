@@ -15,6 +15,11 @@
     "prettier:solidity": "prettier --write contracts/**/*.sol",
     "format": "prettier --write './test/*.ts' './deploy/*.ts' './*.ts'"
   },
+  "overrides": {
+    "@opengsn/cli": {
+      "@truffle/hdwallet-provider": "^2.0.4"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DimensionDev/MysteryBox.git"
@@ -38,6 +43,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-solhint": "^2.0.1",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@opengsn/cli": "^2.2.6",
     "@typechain/ethers-v5": "^10.1.0",
     "@typechain/hardhat": "^6.1.0",
     "@types/chai": "^4.3.1",
