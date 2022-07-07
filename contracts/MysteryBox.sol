@@ -6,8 +6,9 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721EnumerableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "./interfaces/IQLF.sol";
+import "@opengsn/contracts/src/BaseRelayRecipient.sol";
 //123
-contract MysteryBox is OwnableUpgradeable {
+contract MysteryBox is OwnableUpgradeable, BaseRelayRecipient{
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
     struct PaymentOption {
@@ -86,6 +87,14 @@ contract MysteryBox is OwnableUpgradeable {
 
     function initialize() public initializer {
         __Ownable_init();
+    }
+
+    function setForwarder(address forwarder) public {
+        _setTrustedForwarder(forwarder);
+    }
+
+    function versionRecipient() external pure override returns (string memory) {
+        return "1.0.0";
     }
 
     function createBox(
